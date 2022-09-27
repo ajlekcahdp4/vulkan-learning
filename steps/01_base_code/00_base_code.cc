@@ -1,3 +1,5 @@
+// No need to compile this file, it does nothing. Just an example of the code structure.
+
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
