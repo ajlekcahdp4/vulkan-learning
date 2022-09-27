@@ -68,6 +68,8 @@ class hello_triangle_application
 
     void cleanup ()
     {
+        instance.destroy ();
+
         glfwDestroyWindow (window);
 
         glfwTerminate ();
@@ -75,7 +77,7 @@ class hello_triangle_application
 
   private:
     GLFWwindow *window = nullptr;
-    VkInstance instance;
+    vk::Instance instance;
 };
 
 int main ()
