@@ -7,4 +7,4 @@ target_include_directories (02_instance
 
 target_link_libraries(02_instance PRIVATE glfw)
 target_link_libraries(02_instance PRIVATE Vulkan::Vulkan)
-install (TARGETS 02_instance RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin COMPONENT 01_instance)
+install (TARGETS 02_instance RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin COMPONENT 02_instance)
