@@ -3,7 +3,9 @@ cmake_minimum_required (VERSION 3.11)
 project (vulkan_training)
 
 find_package(glfw3 REQUIRED)
-find_package(Vulkan)
+
+find_package(Vulkan REQUIRED)
+include_directories(${Vulkan_INCLUDE_DIRS})
 
 if (NOT VulkanFOUND)
     find_library(Vulkan_LIBRARY REQUIRED)
