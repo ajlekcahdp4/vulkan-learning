@@ -1,6 +1,6 @@
-add_executable (03_validation_layers 03_validation_layers.cc)
+add_executable (03_validation_layers main.cc)
 
-target_include_directories (03_validation_layers 
+target_include_directories (03_validation_layers
     PUBLIC ${GLFW_INCLUDE_DIRS}
     PUBLIC ${VULKAN_INCLUDE_DIRS}
 )
