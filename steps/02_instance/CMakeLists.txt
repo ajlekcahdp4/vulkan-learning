@@ -1,4 +1,4 @@
-add_executable (02_instance 02_instance.cc)
+add_executable (02_instance main.cc)
 
 target_include_directories (02_instance 
     PUBLIC ${GLFW_INCLUDE_DIRS}
