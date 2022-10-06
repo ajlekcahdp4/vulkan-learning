@@ -21,8 +21,10 @@ struct engine
         std::cout << "Making a graphics engine..." << std::endl;
 #endif
         build_glfw_window ();
-        instance        = vkinit::make_instance ("first instance");
-        debug_messenger = vkinit::make_debug_messenger (instance);
+        instance = vkinit::make_instance ("first instance");
+#if !defined(NDEBUG)
+        vkinit::make_debug_messenger (instance);
+#endif
     }
 
     ~engine ()
@@ -34,13 +36,10 @@ struct engine
     }
 
   private:
-    // glfw window parameters
-    uint32_t width              = 800;
-    uint32_t height             = 600;
-    GLFWwindow *window          = nullptr;
-    vk::raii::Instance instance = nullptr;
-
-    // debug callback
+    uint32_t width                                   = 800;
+    uint32_t height                                  = 600;
+    GLFWwindow *window                               = nullptr;
+    vk::raii::Instance instance                      = nullptr;
     vk::raii::DebugUtilsMessengerEXT debug_messenger = nullptr;
 
     // glfw setup

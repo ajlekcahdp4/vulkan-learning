@@ -28,8 +28,7 @@ vk::raii::DebugUtilsMessengerEXT make_debug_messenger (vk::raii::Instance &insta
             vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation |
             vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance,
         debug_call_back, nullptr};
-
-    return vk::raii::DebugUtilsMessengerEXT {instance, createInfo};
+    return instance.createDebugUtilsMessengerEXT (createInfo);
 }
 }   // namespace vkinit
 }   // namespace graphics
