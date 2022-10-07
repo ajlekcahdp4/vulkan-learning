@@ -1,6 +1,6 @@
-add_executable (05_logical_device_and_queues 05_logical_device_and_queues.cc)
+add_executable (05_logical_device_and_queues main.cc)
 
-target_include_directories ( 05_logical_device_and_queues
+target_include_directories (05_logical_device_and_queues
     PUBLIC ${GLFW_INCLUDE_DIRS}
     PUBLIC ${VULKAN_INCLUDE_DIRS}
 )
