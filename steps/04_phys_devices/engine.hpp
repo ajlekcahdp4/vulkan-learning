@@ -25,8 +25,8 @@ struct engine
         instance = vkinit::make_instance ("first instance");
 #if !defined(NDEBUG)
         vkinit::make_debug_messenger (instance);
-        phys_device = vkinit::choose_phys_device (instance);
 #endif
+        phys_device = vkinit::choose_phys_device (instance);
     }
 
     ~engine ()
