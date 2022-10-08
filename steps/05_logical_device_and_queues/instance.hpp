@@ -15,8 +15,7 @@ bool is_supported (std::vector<const char *> &extensions, std::vector<const char
                    const vk::raii::Context &context)
 {
     // check extension support
-    std::vector<vk::ExtensionProperties> supported_extensions =
-        context.enumerateInstanceExtensionProperties ();
+    std::vector<vk::ExtensionProperties> supported_extensions = context.enumerateInstanceExtensionProperties ();
 #if !defined(NDEBUG)
     std::cout << "Device can support the folowwing extensions:" << std::endl;
     for ( auto &s_extension : supported_extensions )
@@ -93,8 +92,7 @@ vk::raii::Instance make_instance (const std::string &appName)
     uint32_t version = context.enumerateInstanceVersion ();
 #if !defined(NDEBUG)
     std::cout << "System can support vulkan Variant: " << VK_API_VERSION_VARIANT (version)
-              << ", Major: " << VK_API_VERSION_MAJOR (version)
-              << ", Minor: " << VK_API_VERSION_MINOR (version)
+              << ", Major: " << VK_API_VERSION_MAJOR (version) << ", Minor: " << VK_API_VERSION_MINOR (version)
               << ", Patch: " << VK_API_VERSION_PATCH (version) << std::endl;
 #endif
     vk::ApplicationInfo appInfo {appName.c_str (), version, "First engine", version, version};
@@ -107,8 +105,7 @@ vk::raii::Instance make_instance (const std::string &appName)
     const char **arr_glfw_extensions;
     arr_glfw_extensions = glfwGetRequiredInstanceExtensions (&glfw_ext_count);
 
-    std::vector<const char *> glfw_extensions (arr_glfw_extensions,
-                                               arr_glfw_extensions + glfw_ext_count);
+    std::vector<const char *> glfw_extensions (arr_glfw_extensions, arr_glfw_extensions + glfw_ext_count);
 
 #if !defined(NDEBUG)
     glfw_extensions.push_back ("VK_EXT_debug_utils");
@@ -137,7 +134,6 @@ vk::raii::Instance make_instance (const std::string &appName)
                                         layers.data (),
                                         static_cast<uint32_t> (glfw_extensions.size ()),
                                         glfw_extensions.data ()};
-
     try
     {
         return vk::raii::Instance {context, create_info};

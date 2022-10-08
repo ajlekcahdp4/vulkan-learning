@@ -48,8 +48,7 @@ void log_device_properties (const vk::raii::PhysicalDevice &device)
 bool device_support_extensions (const vk::raii::PhysicalDevice &device,
                                 const std::vector<const char *> &requested_extensions)
 {
-    std::set<std::string> required_extensions (requested_extensions.begin (),
-                                               requested_extensions.end ());
+    std::set<std::string> required_extensions (requested_extensions.begin (), requested_extensions.end ());
 
 #if !defined(NDEBUG)
     std::cout << "Device can support the folowing extensions:" << std::endl;
@@ -98,8 +97,8 @@ vk::raii::PhysicalDevice choose_phys_device (const vk::raii::Instance &instance)
 
     std::vector<vk::raii::PhysicalDevice> available_devices = instance.enumeratePhysicalDevices ();
 #if !defined(NDEBUG)
-    std::cout << "There are " << available_devices.size ()
-              << " available physical device(s) on this system" << std::endl;
+    std::cout << "There are " << available_devices.size () << " available physical device(s) on this system"
+              << std::endl;
 #endif
 
     for ( auto &device : available_devices )
@@ -121,8 +120,7 @@ queue_family_indeces find_queue_families (vk::raii::PhysicalDevice &device)
     std::vector<vk::QueueFamilyProperties> queue_families = device.getQueueFamilyProperties ();
 
 #if !defined(NDEBUG)
-    std::cout << "Our physical device can support " << queue_families.size () << " queue families"
-              << std::endl;
+    std::cout << "Our physical device can support " << queue_families.size () << " queue families" << std::endl;
 #endif
 
     int i = 0;
@@ -135,8 +133,7 @@ queue_family_indeces find_queue_families (vk::raii::PhysicalDevice &device)
         }
 
 #if !defined(NDEBUG)
-        std::cout << "Queue family #" << i << " is suitable for graphics and presenting"
-                  << std::endl;
+        std::cout << "Queue family #" << i << " is suitable for graphics and presenting" << std::endl;
 #endif
 
         if ( indeces.complete () )
@@ -151,8 +148,8 @@ vk::raii::Device create_logical_device (vk::raii::PhysicalDevice &p_device)
 {
     queue_family_indeces indeces = find_queue_families (p_device);
     float queue_priority         = 1.0f;
-    vk::DeviceQueueCreateInfo queue_create_info {
-        vk::DeviceQueueCreateFlags {}, indeces.graphics_family.value (), 1, &queue_priority};
+    vk::DeviceQueueCreateInfo queue_create_info {vk::DeviceQueueCreateFlags {}, indeces.graphics_family.value (), 1,
+                                                 &queue_priority};
     vk::PhysicalDeviceFeatures device_features {};   // default setup
     std::vector<const char *> enabled_layers;
 #if !defined(NDEBUG)

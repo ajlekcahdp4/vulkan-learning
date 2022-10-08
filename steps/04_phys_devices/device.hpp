@@ -39,8 +39,7 @@ void log_device_properties (const vk::raii::PhysicalDevice &device)
 bool device_support_extensions (const vk::raii::PhysicalDevice &device,
                                 const std::vector<const char *> &requested_extensions)
 {
-    std::set<std::string> required_extensions (requested_extensions.begin (),
-                                               requested_extensions.end ());
+    std::set<std::string> required_extensions (requested_extensions.begin (), requested_extensions.end ());
 
 #if !defined(NDEBUG)
     std::cout << "Device can support the folowing extensions:" << std::endl;
@@ -89,8 +88,8 @@ vk::raii::PhysicalDevice choose_phys_device (const vk::raii::Instance &instance)
 
     std::vector<vk::raii::PhysicalDevice> available_devices = instance.enumeratePhysicalDevices ();
 #if !defined(NDEBUG)
-    std::cout << "There are " << available_devices.size ()
-              << " available physical device(s) on this system" << std::endl;
+    std::cout << "There are " << available_devices.size () << " available physical device(s) on this system"
+              << std::endl;
 #endif
 
     for ( auto &device : available_devices )

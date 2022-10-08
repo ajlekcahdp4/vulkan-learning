@@ -21,8 +21,7 @@ vk::raii::Instance make_instance (const std::string &appName)
     uint32_t version = context.enumerateInstanceVersion ();
 #if !defined(NDEBUG)
     std::cout << "System can support vulkan Variant: " << VK_API_VERSION_VARIANT (version)
-              << ", Major: " << VK_API_VERSION_MAJOR (version)
-              << ", Minor: " << VK_API_VERSION_MINOR (version)
+              << ", Major: " << VK_API_VERSION_MAJOR (version) << ", Minor: " << VK_API_VERSION_MINOR (version)
               << ", Patch: " << VK_API_VERSION_PATCH (version) << std::endl;
 #endif
     vk::ApplicationInfo appInfo {appName.c_str (), version, "First engine", version, version};
@@ -35,8 +34,7 @@ vk::raii::Instance make_instance (const std::string &appName)
     const char **arr_glfw_extensions;
     arr_glfw_extensions = glfwGetRequiredInstanceExtensions (&glfw_ext_count);
 
-    std::vector<const char *> glfw_extensions (arr_glfw_extensions,
-                                               arr_glfw_extensions + glfw_ext_count);
+    std::vector<const char *> glfw_extensions (arr_glfw_extensions, arr_glfw_extensions + glfw_ext_count);
 
 #if !defined(NDEBUG)
     std::cout << "Extensions to be requated by GLFW:" << std::endl;
@@ -44,8 +42,8 @@ vk::raii::Instance make_instance (const std::string &appName)
         std::cout << "\t\"" << extension << "\"" << std::endl;
 #endif
 
-    vk::InstanceCreateInfo create_info {
-        vk::InstanceCreateFlags {}, &appInfo, 0, nullptr, glfw_ext_count, glfw_extensions.data ()};
+    vk::InstanceCreateInfo create_info {vk::InstanceCreateFlags {}, &appInfo, 0, nullptr, glfw_ext_count,
+                                        glfw_extensions.data ()};
 
     try
     {
