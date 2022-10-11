@@ -3,6 +3,7 @@
 #include "device.hpp"
 #include "instance.hpp"
 #include "logging.hpp"
+#include "swapchain.hpp"
 
 #include <vulkan/vulkan_raii.hpp>
 
@@ -34,12 +35,7 @@ struct engine
         present_queue  = queues[1];
         vkinit::query_swapchain_support (phys_device, *surface);
         vkinit::swapchain_bundle bundle = vkinit::create_swapchain (device, phys_device, *surface, width, height);
-        swapchain                       = std::move (bundle.swapchain);
-        swapchain_images                = std::move (bundle.images);
-        swapchain_format                = std::move (bundle.format);
-        swapchain_extent                = std::move (bundle.extent);
     }
-
     ~engine ()
     {
 #if !defined(NDEBUG)
@@ -59,10 +55,7 @@ struct engine
     vk::raii::Device device                          = nullptr;
     vk::raii::Queue graphics_queue                   = nullptr;
     vk::raii::Queue present_queue                    = nullptr;
-    vk::raii::SwapchainKHR swapchain                 = nullptr;
-    std::vector<vk::Image> swapchain_images;
-    vk::Format swapchain_format;
-    vk::Extent2D swapchain_extent;
+    vkinit::swapchain_bundle swapchain;
 
     // glfw setup
     void build_glfw_window ()
