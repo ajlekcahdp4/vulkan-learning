@@ -19,14 +19,14 @@ struct engine
   public:
     engine ()
     {
-#if !defined(NDEBUG)
+
         std::cout << "Making a graphics engine..." << std::endl;
-#endif
+
         build_glfw_window ();
         instance = vkinit::make_instance ("first instance");
-#if !defined(NDEBUG)
+
         vkinit::make_debug_messenger (instance);
-#endif
+
         phys_device    = vkinit::choose_phys_device (instance);
         surface        = std::make_unique<vk::raii::SurfaceKHR> (instance, vkinit::create_surface (instance, window));
         device         = vkinit::create_logical_device (phys_device, *surface);
@@ -38,9 +38,9 @@ struct engine
     }
     ~engine ()
     {
-#if !defined(NDEBUG)
+
         std::cout << "Destroing graphics engine..." << std::endl;
-#endif
+
         glfwTerminate ();
     }
 
@@ -67,15 +67,13 @@ struct engine
         glfwWindowHint (GLFW_RESIZABLE, GLFW_FALSE);
         if ( window = glfwCreateWindow (width, height, "First window", nullptr, nullptr) )
         {
-#if !defined(NDEBUG)
+
             std::cout << "Successfully made a GLFW window" << std::endl;
-#endif
         }
         else
         {
-#if !defined(NDEBUG)
+
             std::cout << "GLFW window creation failed" << std::endl;
-#endif
         }
     }
 };

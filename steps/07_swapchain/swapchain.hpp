@@ -86,7 +86,6 @@ static swapchain_support_details query_swapchain_support (vk::raii::PhysicalDevi
     supportedCompositeAlpha = {}; VULKAN_HPP_NAMESPACE::ImageUsageFlags             supportedUsageFlags     = {};
     */
 
-#if !defined(NDEBUG)
     std::cout << "Swapchain can support the following surface capabilities:\n";
 
     std::cout << "\tminimum image count: " << support.capabilities.minImageCount << std::endl;
@@ -132,11 +131,7 @@ static swapchain_support_details query_swapchain_support (vk::raii::PhysicalDevi
     for ( auto &line : stringList )
         std::cout << "\t\t" << line << std::endl;
 
-#endif
-
     support.formats = p_device.getSurfaceFormatsKHR (*surface);
-
-#if !defined(NDEBUG)
 
     for ( auto &supportedFormat : support.formats )
     {
@@ -150,16 +145,13 @@ static swapchain_support_details query_swapchain_support (vk::raii::PhysicalDevi
         std::cout << "supported pixel format: " << vk::to_string (supportedFormat.format) << '\n';
         std::cout << "supported color space: " << vk::to_string (supportedFormat.colorSpace) << '\n';
     }
-#endif
 
     support.present_modes = p_device.getSurfacePresentModesKHR (*surface);
 
-#if !defined(NDEBUG)
     for ( auto &present_mode : support.present_modes )
     {
         std::cout << '\t' << log_present_mode (present_mode) << '\n';
     }
-#endif
 
     return support;
 }

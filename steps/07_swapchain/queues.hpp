@@ -21,9 +21,7 @@ static queue_family_indices find_queue_families (const vk::raii::PhysicalDevice 
 
     std::vector<vk::QueueFamilyProperties> queue_families = device.getQueueFamilyProperties ();
 
-#if !defined(NDEBUG)
     std::cout << "Our physical device can support " << queue_families.size () << " queue families" << std::endl;
-#endif
 
     int i = 0;
     for ( auto &queue_family : queue_families )
@@ -31,17 +29,15 @@ static queue_family_indices find_queue_families (const vk::raii::PhysicalDevice 
         if ( queue_family.queueFlags & vk::QueueFlagBits::eGraphics )
         {
             indices.graphics_family = i;
-#if !defined(NDEBUG)
+
             std::cout << "Queue family #" << i << " is suitable for graphics" << std::endl;
-#endif
         }
 
         if ( device.getSurfaceSupportKHR (i, *surface) )
         {
             indices.present_family = i;
-#if !defined(NDEBUG)
+
             std::cout << "Queue family #" << i << " is suitable for presenting" << std::endl;
-#endif
         }
 
         if ( indices.complete () )

@@ -134,15 +134,15 @@ std::vector<std::string> log_image_usage_bits (vk::ImageUsageFlags bits)
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_decode_queue
                             VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR = 0x00000400,
-                    #endif
+
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_decode_queue
                             VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR = 0x00000800,
-                    #endif
+
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_decode_queue
                             VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR = 0x00001000,
-                    #endif
+
                     // Provided by VK_EXT_fragment_density_map
                     VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT = 0x00000200,
                     // Provided by VK_KHR_fragment_shading_rate
@@ -150,15 +150,15 @@ std::vector<std::string> log_image_usage_bits (vk::ImageUsageFlags bits)
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_encode_queue
                             VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR = 0x00002000,
-                    #endif
+
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_encode_queue
                             VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR = 0x00004000,
-                    #endif
+
                     #ifdef VK_ENABLE_BETA_EXTENSIONS
                             // Provided by VK_KHR_video_encode_queue
                             VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR = 0x00008000,
-                    #endif
+
                     // Provided by VK_HUAWEI_invocation_mask
                     VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = 0x00040000,
                     // Provided by VK_NV_shading_rate_image
