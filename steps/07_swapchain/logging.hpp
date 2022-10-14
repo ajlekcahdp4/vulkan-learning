@@ -7,6 +7,32 @@ namespace graphics
 {
 namespace vkinit
 {
+
+void log_device_properties (const vk::raii::PhysicalDevice &device)
+{
+    vk::PhysicalDeviceProperties properties = device.getProperties ();
+    std::cout << "Device name: " << properties.deviceName << std::endl;
+    std::cout << "Device type: ";
+
+    switch ( properties.deviceType )
+    {
+    case vk::PhysicalDeviceType::eCpu:
+        std::cout << "CPU" << std::endl;
+        break;
+    case vk::PhysicalDeviceType::eDiscreteGpu:
+        std::cout << "Discrete GPU" << std::endl;
+        break;
+    case vk::PhysicalDeviceType::eIntegratedGpu:
+        std::cout << "Integrated GPU" << std::endl;
+        break;
+    case vk::PhysicalDeviceType::eVirtualGpu:
+        std::cout << "Virtual GPU" << std::endl;
+        break;
+    default:
+        std::cout << "Other" << std::endl;
+    }
+}
+
 VKAPI_ATTR VkBool32 VKAPI_CALL debug_call_back (VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
                                                 VkDebugUtilsMessageTypeFlagsEXT messageType,
                                                 const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
