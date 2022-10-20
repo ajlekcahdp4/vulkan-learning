@@ -8,7 +8,7 @@
 namespace vk_utils
 {
 
-std::vector<char> readFile (std::string filename)
+std::vector<char> read_file (std::string filename)
 {
 
     std::ifstream file (filename, std::ios::ate | std::ios::binary);
